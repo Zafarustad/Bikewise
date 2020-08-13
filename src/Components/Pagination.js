@@ -35,7 +35,7 @@ const Pagination = () => {
           </Button>
         </>
       )}
-      <Button color='primary' outline className='mr-2'>
+      <Button color='primary' className='mr-2'>
         {page}
       </Button>
       {stolenBikes.incidents.length === 10 && (

@@ -98,19 +98,6 @@ export const GlobalProvider = (props) => {
     }
   }
 
-  //   async function getSearchQueryData(query) {
-  //     try {
-  //       setLoading(true);
-  //       const res = await axios.get(
-  //         `https://bikewise.org:443/api/v2/incidents?page=1&per_page=10&proximity=berlin&query=${query}`
-  //       );
-  //       getBikeDataAction(res.data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-
   return (
     <GlobalContext.Provider
       value={{

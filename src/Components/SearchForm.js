@@ -6,26 +6,27 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const SearchForm = () => {
   const [text, setText] = useState('');
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const { getStolenBikeData } = useContext(GlobalContext);
 
-  let newStartDate = new Date(startDate);
-  newStartDate.toTimeString();
-  newStartDate = Number(newStartDate);
+  const onStartDateSelect = (date) => {
+    let newStartDate = new Date(date);
+    newStartDate.toTimeString();
+    newStartDate = Number(newStartDate);
+    setStartDate(newStartDate);
+  };
 
-  let newEndDate = new Date(endDate);
-  newEndDate.toTimeString();
-  newEndDate = Number(newEndDate);
+  const onEndDateSelect = (date) => {
+    let newEndDate = new Date(date);
+    newEndDate.toTimeString();
+    newEndDate = Number(newEndDate);
+    setEndDate(newEndDate);
+  };
 
   const getSearchResult = () => {
-    if (newStartDate == 0 && newEndDate == 0) {
-      getStolenBikeData(1, text);
-    } else {
-      console.log(newStartDate);
-      getStolenBikeData(1, text, newStartDate, newEndDate);
-    }
+    getStolenBikeData(1, text, startDate, endDate);
   };
 
   return (
@@ -37,17 +38,15 @@ const SearchForm = () => {
         placeholder='Search by case description'
       />
       <DatePicker
-        onSelect={(date) => setStartDate(new Date(date))}
-        onChange={(date) => setStartDate(new Date(date))}
+        onChange={(date) => onStartDateSelect(date)}
         selected={startDate}
-        placeholderText='From'
+        placeholderText='From (MM/DD/YYYY)'
         className='mx-5 my-2 text-center shadow input'
       />
       <DatePicker
-        onSelect={(date) => setEndDate(new Date(date))}
-        onChange={(date) => setEndDate(new Date(date))}
+        onChange={(date) => onEndDateSelect(date)}
         selected={endDate}
-        placeholderText='To'
+        placeholderText='To (MM/DD/YYYY)'
         className='mx-5 mt-2 text-center shadow input'
       />
       <Button
