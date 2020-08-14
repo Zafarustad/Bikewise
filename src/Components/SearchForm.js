@@ -35,7 +35,7 @@ const SearchForm = () => {
         className='text-center mx-5 my-2 shadow input'
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder='Search by case description'
+        placeholder='Title/Description'
       />
       <DatePicker
         onChange={(date) => onStartDateSelect(date)}
