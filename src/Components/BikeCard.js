@@ -1,5 +1,6 @@
 import React from 'react';
 import { Jumbotron, Container, Row, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 const BikeCard = ({ bike }) => {
   return (
@@ -37,6 +38,10 @@ const BikeCard = ({ bike }) => {
       </Jumbotron>
     </div>
   );
+};
+
+BikeCard.propTypes = {
+  bike: PropTypes.object.isRequired,
 };
 
 export default BikeCard;

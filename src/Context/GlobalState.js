@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import axios from 'axios';
 import AppReducer from './AppReducer';
+import PropTypes from 'prop-types';
 
 //Types
 export const GET_STOLEN_BIKE_DATA = 'GET_STOLEN_BIKE_DATA';
@@ -23,7 +24,7 @@ const initialState = {
 
 export const GlobalContext = createContext();
 
-export const GlobalProvider = (props) => {
+export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   function setLoading(value) {
@@ -111,7 +112,11 @@ export const GlobalProvider = (props) => {
         getStolenBikeData,
       }}
     >
-      {props.children}
+      {children}
     </GlobalContext.Provider>
   );
+};
+
+GlobalProvider.propTypes = {
+  children: PropTypes.object.isRequired,
 };
